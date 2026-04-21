@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bishal & Anju Wedding</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to right, #f8e1e7, #e6f0ff);
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 45px;
+    margin: 10px 0;
+}
+
+h2 {
+    font-weight: normal;
+}
+
+.details {
+    background: white;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.countdown {
+    font-size: 28px;
+    margin-top: 20px;
+    color: #ff4d6d;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>You're Invited 💍</h2>
+    <h1>Bishal Bista</h1>
+    <h2>&</h2>
+    <h1>Anju Tamang</h1>
+
+    <div class="details">
+        <p><strong>Date:</strong> 18 January 2027</p>
+        <p><strong>Time:</strong> 5:00 PM onwards</p>
+        <p><strong>Venue:</strong> Bhaktapur, Nepal</p>
+
+        <div id="countdown" class="countdown"></div>
+
+        <a href="https://maps.google.com/?q=Bhaktapur,Nepal" class="btn">View Location</a>
+    </div>
+</div>
+
+<script>
+// IMPORTANT: Month is 0-based (0 = Jan)
+var weddingDate = new Date(2027, 0, 18, 17, 0, 0).getTime();
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = weddingDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Wedding Started 🎉";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
